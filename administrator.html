@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <img src="logo.png" alt="ActiveKidsHub Logo">
+        <h1>ActiveKidsHub</h1>
+        <p>"Providing fun and engaging activities for children to develop skills and socialize!"</p>
+    </div>
+    
+    <div class= "nav">
+            
+                <a href="index.html" accesskey="h" title="Alt+H">Home</a>
+                <a href="activites.html" accesskey="a" title="Alt+A">Activities</a>
+                <a href="coaches.html" accesskey="c" title="Alt+C">Coaches</a>
+                <a href="parent dashboard.html" accesskey="p" title="Alt+P">Parent Dashboard</a>
+                <a href="administrator.html" accesskey="m" title="Alt+M" >Admin Dashboard</a>
+            
+        </div>
+    <div class="breadcrumb">
+          <a href="index.html">Home</a> > Admin Dashboard
+      </div>
+
+<div class="admin-info">
+                <img src="User_icon.png" alt="Admin Icon" class="profile-pic">
+                <h2>Amal Abdulaziz</h2>
+            </div>
+        <div class="contain">
+            <div class="left">
+            <div class="box">
+                <h3>Registered Kids</h3>
+                <ul id="kids-list">
+    <li>Ali Al-Fayz</li>
+    <li>Sara Al-Salem</li>
+    <li>Khaled Mohamed</li>
+    <li class="hidden-kid">Norah Al-Qahtani</li>
+    <li class="hidden-kid">Amal Al-Fayz</li>
+    <li class="hidden-kid">Abdulaziz Al-Qassem</li>
+</ul>
+<button id="show-more-kids">Show More</button>
+
+            </div>
+            <div class="box">
+                <h3>Coaches</h3>
+                <ul>
+                    <li><a href="schedule1.html">Ahmed Mohammed</a> - Tennis</li>
+                    <li><a href="schedule2.html">Abdullah Al-Mutari</a> - Soccer</li>
+                    <li><a href="#">Khaled Abdulaziz</a> - Swimming</li>
+                    <li><a href="#">Nora Al-Dosari</a> - Horse Riding</li>
+                    <li><a href="#">Fahad Al-Shammari</a> - Karate</li>
+                    <li><a href="#">Sara Al-Otaibi</a> - Painting</li>
+                </ul>
+            </div>
+        
+</div>
+<div class = "right">
+<div class="box">
+    <h3>Activities</h3>
+    <div class="activity-list">
+        <ul>
+            <li>
+                <strong>Tennis</strong> (Coach: Ahmed Mohammed)
+                <ul>
+                    <li>Ali Al-Fayz</li>
+                    <li>Amal Al-Fayz</li>
+                    <li>Abdulaziz Al-Qassem</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Soccer</strong> (Coach: Abdullah Al-Mutari)
+                <ul>
+                    <li>Sara Al-Salem</li>
+                    <li>Abdulaziz Al-Qassem</li>
+                    <li>Norah Al-Qahtani</li>
+                    <li>Khaled Mohamed</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Swimming</strong> (Coach: Khaled Abdulaziz)
+                <ul>
+                    <li>Ali Al-Fayz</li>
+                    <li>Amal Al-Fayz</li>
+                    <li>Norah Al-Qahtani</li>
+                    <li>Khaled Mohamed</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Horse Riding</strong> (Coach: Nora Al-Dosari)
+                <ul>
+                    <li>Amal Al-Fayz</li>
+                    <li>Abdulaziz Al-Qassem</li>
+                    <li>Sara Al-Salem</li>
+                    <li>Khaled Mohamed</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Karate</strong> (Coach: Fahad Al-Shammari)
+                <ul>
+                    <li>Sara Al-Salem</li>
+                    <li>Khaled Mohamed</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Painting</strong> (Coach: Sara Al-Otaibi)
+                <ul>
+                    <li>Ali Al-Fayz</li>
+                    <li>Norah Al-Qahtani</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+	</div>
+</div>
+</div>
+
+    <footer class="footer">
+        <p>&copy; 2025 ActiveKidsHub | Contact: <a href="mailto:email@example.com">email@example.com</a></p>
+    </footer>
+	<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const moreBtn = document.getElementById('show-more-kids');
+  const hiddenKids = document.querySelectorAll('#kids-list .hidden-kid');
+
+  // Handle show more click
+  if (moreBtn) {
+    moreBtn.addEventListener('click', function () {
+      hiddenKids.forEach(kid => kid.style.display = 'list-item');
+      moreBtn.style.display = 'none';
+    });
+  }
+
+  // ✅ Re-hide kids if window is resized
+  window.addEventListener('resize', function () {
+    if (moreBtn && moreBtn.style.display !== 'none') {
+      hiddenKids.forEach(kid => {
+        kid.style.display = 'none';
+      });
+    }
+  });
+});
+</script>
+
+<script src="theme.js" ></script>
+</body>
+</html>

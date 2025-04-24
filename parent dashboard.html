@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Parent Dashboard - ActiveKidsHub</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<script src="theme.js"></script>
+  <div class="header">
+    <img src="logo.png" alt="ActiveKidsHub Logo" width="120px" height="120px" />
+    <h1>ActiveKidsHub</h1>
+    <p>"Providing fun and engaging activities for children to develop skills and socialize!"</p>
+  </div>
+
+  <div class="nav">
+    <a href="index.html" accesskey="h" title="Alt+H">Home</a>
+                <a href="activites.html" accesskey="a" title="Alt+A">Activities</a>
+                <a href="coaches.html" accesskey="c" title="Alt+C">Coaches</a>
+                <a href="parent dashboard.html" accesskey="p" title="Alt+P">Parent Dashboard</a>
+                <a href="administrator.html" accesskey="m" title="Alt+M" >Admin Dashboard</a>
+  </div>
+
+  <div class="breadcrumb">
+    <span><a href="index.html">Home</a> > Parent Dashboard</span>
+  </div>
+
+  <div>
+    <img src="User_icon.png" alt="Parent Icon" class="profile-pic" />
+    <h2>Naser Al-Fayz</h2>
+    <p>Welcome to your parent dashboard!</p>
+  </div>
+
+  <div class="dashboard-container">
+    <div class="buttons-container">
+      <a href="register.html"><button class="button">Add New Kid</button></a>
+      <a href="enroll activity.html"><button class="button">Enroll Activity</button></a>
+      <a href="rating.html"><button class="button">Activity Evaluation</button></a>
+    </div>
+
+    <div class="kids-list">
+      <h3>Your Kids:</h3>
+      <label for="sort-kids">Sort by:</label>
+      <select id="sort-kids">
+        <optgroup label="Sort by Name">
+          <option value="name-asc">A-Z</option>
+          <option value="name-desc">Z-A</option>
+        </optgroup>
+        <optgroup label="Sort by Age">
+          <option value="age-youngest">Youngest First</option>
+          <option value="age-oldest">Oldest First</option>
+        </optgroup>
+      </select>
+      <div id="kids-container"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2025 ActiveKidsHub | Contact: <a href="mailto:email@example.com">email@example.com</a></p>
+  </footer>
+
+<script>
+  const defaultKids = [
+    { name: "Amal Al-Fayz", dob: "2015-05-11" },
+    { name: "Ali Al-Fayz", dob: "2018-08-22" },
+    { name: "Sara Al-Fayz", dob: "2013-03-15" }
+  ];
+
+  function getAge(dob) {
+    const birthDate = new Date(dob);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return age;
+  }
+
+  function loadKids() {
+    let kids = JSON.parse(localStorage.getItem("kids") || '[]');
+    // Merge default kids with registered kids, avoiding duplicates by name
+    const mergedKids = [...defaultKids];
+    kids.forEach(kid => {
+        if (!mergedKids.some(existingKid => existingKid.name === kid.name)) {
+            mergedKids.push(kid);
+        }
+    });
+    // Save merged list back to localStorage
+    localStorage.setItem("kids", JSON.stringify(mergedKids));
+    return mergedKids;
+  }
+
+  function displayKids(kids) {
+    const container = document.getElementById("kids-container");
+    container.innerHTML = "";
+    if (kids.length === 0) {
+        container.innerHTML = "<p>No kids registered yet.</p>";
+        return;
+    }
+    kids.forEach((kid) => {
+        const age = kid.dob ? getAge(kid.dob) : "Unknown";
+        container.innerHTML += `
+            <div class="kid">
+                <img src="User_icon.png" alt="Kid Icon" class="small-icon">
+                <p><strong>${kid.name}</strong><br>DOB: ${kid.dob || "Not provided"}<br>Age: ${age}</p>
+            </div>
+        `;
+    });
+  }
+
+  function sortKids(kids, criteria) {
+    const kidsWithDob = kids.map(kid => ({
+        ...kid,
+        dob: kid.dob || "1900-01-01" // Default for sorting if DOB is missing
+    }));
+    switch (criteria) {
+        case "name-asc":
+            return kids.sort((a, b) => a.name.localeCompare(b.name));
+        case "name-desc":
+            return kids.sort((a, b) => b.name.localeCompare(b.name));
+        case "age-youngest":
+            return kidsWithDob.sort((a, b) => new Date(b.dob) - new Date(a.dob));
+        case "age-oldest":
+            return kidsWithDob.sort((a, b) => new Date(a.dob) - new Date(b.dob));
+        default:
+            return kids;
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    let kids = loadKids();
+    displayKids(kids);
+    document.getElementById("sort-kids").addEventListener("change", (e) => {
+        const sorted = sortKids([...kids], e.target.value);
+        displayKids(sorted);
+    });
+  });
+</script>
+
+</body>
+</html>

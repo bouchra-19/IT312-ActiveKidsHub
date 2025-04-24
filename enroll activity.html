@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Enrollment | ActiveKidsHub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <img src="logo.png" alt="logo" width="120px" height="120px">
+        <h1>ActiveKidsHub</h1>
+        <p>"Providing fun and engaging activities for children to develop skills and socialize!"</p>
+    </div>
+    <div class="nav">
+        <a href="index.html" accesskey="h" title="Alt+H">Home</a>
+        <a href="activites.html" accesskey="a" title="Alt+A">Activities</a>
+        <a href="coaches.html" accesskey="c" title="Alt+C">Coaches</a>
+        <a href="parent dashboard.html" accesskey="p" title="Alt+P">Parent Dashboard</a>
+        <a href="administrator.html" accesskey="m" title="Alt+M">Admin Dashboard</a>
+    </div>
+    <div class="breadcrumb">
+        <span><a href="index.html">Home</a> > <a href="parent_dashboard.html">Parent Dashboard</a> > Enroll Activity</span>
+    </div>
+
+    <!-- Enrollment Section -->
+    <section class="enrollment">
+        <h2>Welcome, this form is to register your kid into our activities</h2>
+        <form id="enrollmentForm">
+            <!-- Kid Selection -->
+            <label for="kid-select">Choose the kid you want to register for:</label>
+            <select id="kid-select" name="kid" required>
+                <option value="" disabled selected>Select</option>
+            </select>
+
+            <!-- Activity Selection -->
+            <h3>Our Available Activities:</h3>
+            <div class="activity-container-enrollment">
+                <div class="filter-box-enrollment">
+                    <h4>Filter Activities</h4>
+                    <label for="tutor-filter">Filter activities by tutor:</label>
+                    <select id="tutor-filter">
+                        <option value="all">Show All</option>
+                    </select>
+
+                    <p>Pre-requisite: Based on Skill Level</p>
+                    <label><input type="radio" name="skill-level" value="all" checked> All Levels</label><br>
+                    <label><input type="radio" name="skill-level" value="beginner"> Beginner</label><br>
+                    <label><input type="radio" name="skill-level" value="intermediate"> Intermediate</label>
+                </div>
+
+                <div class="activities-grid-enrollment" id="activities-grid">
+                    <!-- Activities will be dynamically populated here -->
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button">Register</button>
+        </form>
+    </section>
+
+    <!-- Enrollment Details Display -->
+    <section id="enrollment-details" class="enrollment-details">
+        <!-- Enrollment details will be displayed here -->
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 ActiveKidsHub | Contact: <a href="mailto:email@example.com">email@example.com</a></p>
+    </footer>
+
+    <script src="enroll.js" defer></script>
+    <script src="theme.js" defer></script>
+</body>
+</html>

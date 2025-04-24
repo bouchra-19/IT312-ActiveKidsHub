@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Evaluation</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <div class="header">
+        <img src="logo.png" alt="Logo">
+        <h1>ActiveKidsHub</h1>
+        <p>"Providing fun and engaging activities for children to develop skills and socialize!"</p>
+    </div>
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="activites.html">Activities</a>
+        <a href="coaches.html">Coaches</a>
+        <a href="parent dashboard.html">Parent Dashboard</a>
+        <a href="administrator.html">Admin Dashboard</a>
+    </div>
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> > <a href="parent dashboard.html">Parent Dashboard</a> > Activity Evaluation
+    </div>
+    
+    <div class="container-rating">
+        <h2>Activity Evaluation</h2>
+        <h3>Choose one of the activities</h3>
+        <div class="activities" id="activityButtons">
+            <button class="activity-button">Tennis</button>
+            <button class="activity-button">Karate</button>
+            <button class="activity-button">Soccer</button>
+            <button class="activity-button">Horse Riding</button>
+            <button class="activity-button">Swimming</button>
+            <button class="activity-button">Painting</button>
+        </div>
+        
+        <h3>Rating</h3>
+        <div id="ratingStars">
+            <span class="stars">☆</span>
+            <span class="stars">☆</span>
+            <span class="stars">☆</span>
+            <span class="stars">☆</span>
+            <span class="stars">☆</span>
+        </div>
+        
+        <h3>Feedback</h3>
+        <form action="rating.html">
+        <textarea placeholder="Enter your feedback here..."></textarea>
+        <br>
+        <button class="submit-button">Done</button>
+    </form>
+    </div>
+     <footer>
+        <p>&copy; 2025 ActiveKidsHub | Contact: <a href="mailto:email@example.com">email@example.com</a></p>
+    </footer>
+    <script src="evaluation.js"></script>
+
+   </body>
+</html>
